@@ -1,0 +1,19 @@
+<h1>USUARIOS</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>NAME</th>
+			<th>SELECT </th>
+			<th colspan="6"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<strong>Share your playlists:</strong>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= link_to('Show playlist', user_path(user))%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

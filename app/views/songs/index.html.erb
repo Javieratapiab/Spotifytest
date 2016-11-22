@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag(songs_path, method: :get)%>
+<div class="field">
+  <%= label_tag :genre_id %>
+  <%= select_tag :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: true, class: 'btn btn-warning' %>
+  <%= label_tag :Order %>
+  <%= check_box_tag :order %>
+  <%= submit_tag 'Filtrar', class: 'btn btn-danger'%>
+</div>
+ 
+
+  <h1>Songs</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>DURATION </th>
+        <th>GENRE </th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+    <tr>
+      <td><%= song.name %></td>
+      <td><%= song.duration %></td>
+      <td><%= song.genre.name %></td>
+      <td><%= link_to 'Show', song %></td>
+      <td><%= link_to 'Edit', edit_song_path(song) %></td>
+      <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td>
+        <%= form_for([song, UserSong.new]) do |f| %>
+          <%= f.submit 'add' %>
+        <% end %>
+      </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<br>
+
+<%= link_to 'New Song', new_song_path, class: 'btn btn-success' %>

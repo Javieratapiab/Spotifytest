@@ -1,0 +1,23 @@
+<h1>My playlist</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>NAME</th>
+			<th>DURATION</th>
+			<th>GENRE</th>
+			<th colspan="6"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<strong>Share your playlist:</strong>
+		<% @playlists.each do |us| %>
+		<tr>
+			<td><%= us.song.name %></td>
+			<td><%= us.song.duration %></td>
+			<td><%= us.song.genre.name %></td>
+			<td><%= link_to 'Delete', user_user_song_path(@user,us), method: :delete %>
+			</tr>
+		</tbody>
+		<% end %>
+	</table>

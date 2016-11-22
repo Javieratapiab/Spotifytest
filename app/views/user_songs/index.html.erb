@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Playlist</h1>
+
+<div>
+  <% @playlists.each do |song| %>
+  <div>
+  <p> <%= playlist.song %> </p>
+  </div>
+
+  <%= form_for [@songs,Playlist.new] do |f| %>
+    <%= f.text_area :song %>
+    
+<% end %>
+</div>
+</div>
